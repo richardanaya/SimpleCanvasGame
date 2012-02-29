@@ -1,0 +1,104 @@
+<html>
+<head>
+    <title>Simple Game</title>
+    <style>html,body { background-color: #202020;}</style>
+</head>
+<body>
+<center><canvas id="screen" width="800px" height="600px"></canvas></center>
+</body>
+<script>
+    //IGNORE THIS
+    var createImage = function(path) {var img = new Image();img.src = path;return img};
+    var canvas = document.getElementById('screen');
+    var graphics = canvas.getContext('2d');
+    //IGNORE THIS
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    var showRedSquare = false;
+    var ghost = createImage('ghost.png');
+
+    // A list of key codes can be found at:
+    // http://www.cambiaresearch.com/articles/15/javascript-char-codes-key-codes
+
+    function keydown(key) {
+        showRedSquare = true;
+    }
+
+    function keyup(key) {
+        showRedSquare = false;
+    }
+
+    function mousedown(x, y) {
+        console.log('mouse down');
+    }
+
+    function mousemove(x, y) {
+        console.log('mouse move');
+    }
+
+    function mouseup(x, y) {
+        console.log('mouse up');
+    }
+
+    // Called 60 times per second
+    // for a handy list of all the operations you can do:
+    // http://www.nihilogic.dk/labs/canvas_sheet/HTML5_Canvas_Cheat_Sheet.png
+    function draw(graphics) {
+        graphics.fillStyle = 'black';
+        graphics.fillRect(0,0,800,600);
+        if(showRedSquare){
+            graphics.strokeStyle = 'red';
+            graphics.strokeRect(50,50,100,100);
+        }
+        graphics.fillStyle = 'white';
+        graphics.font = '14px sans-serif';
+        graphics.fillText('Hello World',50,50);
+        graphics.drawImage(ghost,200,200);
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    //IGNORE THIS
+    document.addEventListener("keydown", function(e){keydown(e.keyCode)});
+    document.addEventListener("keyup", function(e){keyup(e.keyCode)});
+    document.addEventListener("mousedown", function(e){mousedown(e.offsetX,e.offsetY);});
+    document.addEventListener("mousemove", function(e){mousemove(e.offsetX,e.offsetY);});
+    document.addEventListener("mouseup", function(e){mouseup(e.offsetX,e.offsetY);});
+    setInterval(function(){draw(graphics);},1000/60);
+    //IGNORE THIS
+</script>
+</html>
